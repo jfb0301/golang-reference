@@ -4,8 +4,8 @@ import "fmt"
 
 func main() {
 	m := map[string]int {
-		"Hello " : 5,
-		"World " : 10, 
+		"Hello" : 5,
+		"World" : 0, 
 	}
 	v, ok := m["Hello"]
 	fmt.Println(v, ok)

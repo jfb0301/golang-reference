@@ -10,9 +10,14 @@ func DoSomeThings(val1 int, val2 int) (_ string, err error) {
 			err = fmt.Errorf("in DoSomeThings: %w", err)
 		}
 	}()
-	val3, err := doThin1(val1)
+	val3, err := doThing1(val1)
+	if err != nil {
+		return "", err
+	}
+	val4, err := doThing2(val2)
 	if err != nil {
 		return "", err
 	}
 	return doThing3(val3, val4)
 }
+ 

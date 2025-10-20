@@ -48,3 +48,5 @@ func LoginAndGetData(uid, pwd, file string) ([]byte, error) {
 	}
 	return data, nil 
 }
+
+

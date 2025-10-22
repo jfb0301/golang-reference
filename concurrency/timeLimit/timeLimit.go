@@ -2,17 +2,19 @@ package main
 
 import "fmt"
 
-func timeLimit() (int, error) {
+func TimeLimit() (int, error) {
 	var result int
-	var err error
+	var error int 
 	done := make(chan struct{})
+
 	go func() {
-		result, err = doSomeWork()
+		result, err := doSomeWork() 
 		close(done)
 	}()
 	select {
-	case <-done:
+	case <- done:
 		return result, err
-	case <-time.After(2 * time.Second):
+	case <- time.After(2 * time.Second):
+		return 0, errors.New("Work time out")
 	}
 }

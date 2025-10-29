@@ -1,4 +1,12 @@
-func slowServer() *httptest.Server {
+package servers
+
+import(
+	"net/http"
+	"net/http/httptest"
+	"time"
+)
+
+func SlowServer() *httptest.Server {
 	s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		time.Sleep(2 * time.Second)
 		w.Write([]byte("Slow response"))
@@ -7,9 +15,9 @@ func slowServer() *httptest.Server {
 }
 
 
-func fastServer() *httptest.Server {
+func FastServer() *httptest.Server {
 	s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if r.URL.query().Get("error") == "true" {
+		if r.URL.Query().Get("error") == "true" {
 			w.Write([]byte("error"))
 			return
 		}
